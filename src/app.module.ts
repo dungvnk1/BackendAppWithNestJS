@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomerModule } from './customer/customer.module';
+import { UploadModule } from './upload/upload.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { CustomerModule } from './customer/customer.module';
       migrations: [__dirname + '/src/migrations/**/*{.ts}'],
     }),
     CustomerModule,
+    UploadModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
