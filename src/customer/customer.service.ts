@@ -13,6 +13,14 @@ export class CustomerService {
       async findAll(): Promise<Customer[]> {
         return this.customerRepository.find();
       }
+
+      async findOne(id: number): Promise<Customer> {
+        const customer = await this.customerRepository.findOneBy({ id });
+        if (!customer) {
+            throw new Error(`Customer with id ${id} not found`);
+        }
+        return customer;
+      }
     
       async create(customerData: Partial<Customer>): Promise<Customer> {
         const customer = this.customerRepository.create(customerData);
